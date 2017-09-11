@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Link Generator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    #app {margin-top: 20px;}
+    .wrapper {position: relative;}
+    .wrapper > .btn {position: absolute; top: 0; right: 0;}
+    .product-image {background: #eee url("./images/photo.png") no-repeat center; height: 200px; text-align: center;}
+    .product-image > img {margin: auto; max-height: 200px; max-width: 100%; display: flex;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-warning">
+            <strong>Warning!</strong> This is not an official site used by RipeConcepts. Please use with caution. The developer is not responsible with any damages occur when using the site.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 product-image">
+          <img :src="'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + prodkind + '/' + code + '/' + normalize_sku + '-007BCHRISTMAS_A_PD.jpg'">
+        </div>
+        <div class="col-sm-9">
+          <form @submit.prevent>
+            <div class="form-group">
+              <label for="sku">SKU</label>
+              <input type="text" class="form-control" name="sku" v-model="sku" placeholder="MIN-XXX-ZZZ">
+            </div>
+            <div class="form-group">
+              <label for="colorway">Colorways</label>
+              <div class="radio">
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="A"> A
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="B"> B
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="C"> C
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="D"> D
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="E"> E
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="F"> F
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-default" @click="generate_links">Generate</button>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Links</label>
+              <div class="wrapper">
+                <textarea id="links" class="form-control" v-model="links" placeholder="Output links"></textarea>
+                <button class="btn btn-default btn-xs" @click="copy_to_clipboard">Copy</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript" src="./js/mixins.js"></script>
+  <script type="text/javascript">
+    const app = new Vue({
+      el: '#app',
+      mixins: [mixins],
+      data: {
+        sku: '',
+        links: '',
+        img_error: false
+      },
+      computed: {
+        normalize_sku() {
+          return this.sku.trim().toUpperCase();
+        },
+        code() {
+          return this.normalize_sku.split('-')[1];
+        },
+        prodkind() {
+          return this.normalize_sku.split('-')[2];
+        }
+      },
+      methods: {
+        copy_to_clipboard() {
+          document.getElementById('links').select();
+          document.execCommand('copy');
+        },
+        img_load_error() {
+          this.img_error = true;
+        },
+        img_load_success() {
+          alert('he');
+          this.img_error = false;
+        },
+        generate_links() {
+          var links_array = [];
+
+          // links_array.push(this.layout_CODE());
+
+          this.links = 'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + this.prodkind + '/' + this.code + '/' + this.normalize_sku + '-007BCHRISTMAS_A_PD.jpg';
+        }
+      }
+    })
+  </script>
+</body>
+</html>
