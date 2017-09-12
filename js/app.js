@@ -26,15 +26,16 @@ const app = new Vue({
       document.execCommand('copy');
     },
     generate_links() {
-
       switch (this.prodkind) {
         case 'AIO':
           this.links.array = this.layout_AIO().toString().split(',').reverse();
+          break;
+        case 'HFS':
+          this.links.array = this.layout_AIO().toString().split(',').reverse();
+          break;
       }
 
       this.links.string = this.links.array.toString().replace(/,/g, '\n');
-
-      // this.links = 'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + this.prodkind + '/' + this.code + '/' + this.normalize_sku + '-007BCHRISTMAS_A_PD.jpg';
     }
   }
 })
