@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>Image Link Generator</title>
+  <link rel="icon" href="./images/prism_60.gif">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style>
     #app {margin-top: 20px;}
     .wrapper {position: relative;}
+    .wrapper > textarea {width: 100%; height: 150px; resize: none;}
     .wrapper > .btn {position: absolute; top: 0; right: 0;}
     .product-image {text-align: center;}
     .product-image > img {margin: auto; max-width: 100%; display: flex; background: #eee url("./images/photo.png") no-repeat center; height: 200px;}
+    .link-image > a {display: block; height: 50px;}
+    .link-image > a > img {max-width: 100%;}
   </style>
 </head>
 <body>
@@ -23,7 +27,7 @@
       </div>
       <div class="row">
         <div class="col-sm-3 product-image">
-          <img :src="'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + prodkind + '/' + code + '/' + normalize_sku + '-007BCHRISTMAS_A_PD.jpg'">
+          <img :src="'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + prodkind + '/' + code + '/' + normalize_sku + '-007B_A_PD.jpg'">
         </div>
         <div class="col-sm-9">
           <form @submit.prevent>
@@ -52,6 +56,12 @@
                 <label class="radio-inline">
                   <input type="radio" name="colorway" value="F" v-model="colorways"> F
                 </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="G" v-model="colorways"> G
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="colorway" value="H" v-model="colorways"> H
+                </label>
               </div>
             </div>
             <div class="form-group">
@@ -60,59 +70,27 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Links</label>
               <div class="wrapper">
-                <textarea id="links" class="form-control" v-model="links" placeholder="Output links"></textarea>
+                <textarea id="links" class="form-control" v-model="links.string" placeholder="Output links"></textarea>
                 <button class="btn btn-default btn-xs" @click="copy_to_clipboard">Copy</button>
               </div>
             </div>
           </form>
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-12" v-if="links.array.length">
+          <h3>Image Links</h3>
+        </div>
+        <div class="col-sm-1 link-image" v-for="link in links.array">
+          <a :href="link" target="_blank"><img :src="link" alt="No Image Generated"></a>
+        </div>
+      </div>
     </div>
+    <pre>{{this.$data}}</pre>
   </div>
   <script src="https://unpkg.com/vue"></script>
-  <script type="text/javascript" src="./js/mixins.js"></script>
-  <script type="text/javascript">
-    const app = new Vue({
-      el: '#app',
-      mixins: [mixins],
-      data: {
-        sku: '',
-        colorways: null,
-        links: '',
-        img_error: false
-      },
-      computed: {
-        normalize_sku() {
-          return this.sku.trim().toUpperCase();
-        },
-        code() {
-          return this.normalize_sku.split('-')[1];
-        },
-        prodkind() {
-          return this.normalize_sku.split('-')[2];
-        }
-      },
-      methods: {
-        copy_to_clipboard() {
-          document.getElementById('links').select();
-          document.execCommand('copy');
-        },
-        img_load_error() {
-          this.img_error = true;
-        },
-        img_load_success() {
-          alert('he');
-          this.img_error = false;
-        },
-        generate_links() {
-          var links_array = [];
-
-          // links_array.push(this.layout_CODE());
-
-          this.links = 'https://cdn3.minted.com/files/mintedProductsImages/MIN/' + this.prodkind + '/' + this.code + '/' + this.normalize_sku + '-007BCHRISTMAS_A_PD.jpg';
-        }
-      }
-    })
-  </script>
+  <script type="text/javascript" src="./js/prodkind.js"></script>
+  <script type="text/javascript" src="./js/layout.js"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
 </body>
 </html>
