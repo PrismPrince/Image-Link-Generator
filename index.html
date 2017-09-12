@@ -35,22 +35,22 @@
               <label for="colorway">Colorways</label>
               <div class="radio">
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="A"> A
+                  <input type="radio" name="colorway" value="A" v-model="colorways"> A
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="B"> B
+                  <input type="radio" name="colorway" value="B" v-model="colorways"> B
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="C"> C
+                  <input type="radio" name="colorway" value="C" v-model="colorways"> C
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="D"> D
+                  <input type="radio" name="colorway" value="D" v-model="colorways"> D
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="E"> E
+                  <input type="radio" name="colorway" value="E" v-model="colorways"> E
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="F"> F
+                  <input type="radio" name="colorway" value="F" v-model="colorways"> F
                 </label>
               </div>
             </div>
@@ -77,6 +77,7 @@
       mixins: [mixins],
       data: {
         sku: '',
+        colorways: null,
         links: '',
         img_error: false
       },
