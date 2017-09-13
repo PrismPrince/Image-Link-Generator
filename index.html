@@ -72,9 +72,9 @@
               <button class="btn btn-default" @click="generate_links">Generate</button>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Links</label>
+              <label for="exampleInputPassword1">Links <span class="label label-danger" v-if="links.array.length > 100">Cache invalidator has maximum of 100 entry. {{ links.array.length }} links generated.</span></label>
               <div class="wrapper">
-                <textarea id="links" class="form-control" v-model="links.string" placeholder="Output links"></textarea>
+                <textarea id="links" class="form-control" v-model="links.string" placeholder="Generated links"></textarea>
                 <button class="btn btn-default btn-xs" @click="copy_to_clipboard">Copy</button>
               </div>
             </div>
