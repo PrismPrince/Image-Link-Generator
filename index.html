@@ -41,31 +41,48 @@
               <input type="text" class="form-control" name="sku" v-model="sku" placeholder="MIN-XXX-ZZZ">
             </div>
             <div class="form-group">
-              <label for="colorway">Colorways</label>
+              <label for="colorways">Colorways</label>
               <div class="radio">
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="A" v-model="colorways"> A
+                  <input type="radio" name="colorways" value="A" v-model="colorways"> A
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="B" v-model="colorways"> B
+                  <input type="radio" name="colorways" value="B" v-model="colorways"> B
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="C" v-model="colorways"> C
+                  <input type="radio" name="colorways" value="C" v-model="colorways"> C
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="D" v-model="colorways"> D
+                  <input type="radio" name="colorways" value="D" v-model="colorways"> D
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="E" v-model="colorways"> E
+                  <input type="radio" name="colorways" value="E" v-model="colorways"> E
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="F" v-model="colorways"> F
+                  <input type="radio" name="colorways" value="F" v-model="colorways"> F
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="G" v-model="colorways"> G
+                  <input type="radio" name="colorways" value="G" v-model="colorways"> G
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorway" value="H" v-model="colorways"> H
+                  <input type="radio" name="colorways" value="H" v-model="colorways"> H
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="greetings">Greetings</label>
+              <div class="checkbox">
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="greetings" value="HOLIDAY" v-model="greetings"> Holiday
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="greetings" value="CHRISTMAS" v-model="greetings"> Christmas
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="greetings" value="NEWYEAR" v-model="greetings"> New Year
+                </label>
+                <label class="checkbox-inline">
+                  <input type="checkbox" name="greetings" value="RELIGIOUS" v-model="greetings"> Religious
                 </label>
               </div>
             </div>
@@ -90,8 +107,20 @@
           <a class="thumbnail" :href="link" target="_blank"><img :src="link" alt="No Image Generated"></a>
         </div>
       </div>
+      <div class="row ">
+        <div class="col-sm-12">
+          <div class="alert alert-info">
+            <strong>Valid Product Kinds:</strong>
+            <ul>
+              <li>AIO</li>
+              <li>HFS</li>
+              <li>HSM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <pre>{{this.$data}}</pre>
     </div>
-    <pre>{{this.$data}}</pre>
   </div>
   <script src="https://unpkg.com/vue"></script>
   <script type="text/javascript" src="./js/prodkind.js"></script>

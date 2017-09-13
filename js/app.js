@@ -4,6 +4,7 @@ const app = new Vue({
   data: {
     sku: '',
     colorways: null,
+    greetings: [],
     links: {
       string: '',
       array: []
