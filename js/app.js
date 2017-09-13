@@ -31,7 +31,10 @@ const app = new Vue({
           this.links.array = this.layout_AIO().toString().split(',').reverse();
           break;
         case 'HFS':
-          this.links.array = this.layout_AIO().toString().split(',').reverse();
+          this.links.array = this.layout_HFS().toString().split(',').reverse();
+          break;
+        case 'HSM':
+          this.links.array = this.layout_HSM().toString().split(',').reverse();
           break;
       }
 
