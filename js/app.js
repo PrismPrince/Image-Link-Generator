@@ -31,6 +31,9 @@ const app = new Vue({
         case 'AIO':
           this.links.array = this.layout_AIO().toString().split(',').reverse();
           break;
+        case 'HFM':
+          this.links.array = this.layout_HFM().toString().split(',').reverse();
+          break;
         case 'HFS':
           this.links.array = this.layout_HFS().toString().split(',').reverse();
           break;
