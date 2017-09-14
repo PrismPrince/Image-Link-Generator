@@ -5,6 +5,7 @@
   <link rel="icon" href="./images/prism_60.gif">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style>
+    [v-cloak] {display: none;}
     #app {margin-top: 20px;}
     .wrapper {position: relative;}
     .wrapper > textarea {width: 100%; height: 150px; resize: vertical;}
@@ -21,7 +22,7 @@
   </style>
 </head>
 <body>
-  <div id="app">
+  <div id="app" v-cloak>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -70,7 +71,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="greetings">Greetings</label>
+              <label for="greetings">Greetings <small class="text-muted">(select if applicable)</small></label>
               <div class="checkbox">
                 <label class="checkbox-inline">
                   <input type="checkbox" name="greetings" value="HOLIDAY" v-model="greetings"> Holiday
@@ -87,7 +88,7 @@
               </div>
             </div>
             <div class="form-group">
-              <button class="btn btn-default" @click="generate_links">Generate</button>
+              <button class="btn btn-primary" @click="generate_links">Generate</button>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Links <span class="label label-danger" v-if="links.array.length > 100">Cache invalidator has maximum of 100 entry. {{ links.array.length }} links generated.</span></label>
@@ -114,6 +115,7 @@
             <ul>
               <li>AIO</li>
               <li>HFS</li>
+              <li>HMC</li>
               <li>HSM</li>
               <li>HYC</li>
             </ul>

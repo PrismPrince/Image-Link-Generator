@@ -40,6 +40,9 @@ const app = new Vue({
         case 'HYC':
           this.links.array = this.layout_HYC().toString().split(',').reverse();
           break;
+        case 'HMC':
+          this.links.array = this.layout_HMC().toString().split(',').reverse();
+          break;
       }
 
       this.links.string = this.links.array.toString().replace(/,/g, '\n');

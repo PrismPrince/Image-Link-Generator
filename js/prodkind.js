@@ -28,6 +28,7 @@ var mix_prodkinds = {
         link.push(this.layout_001MHOLIDAY());
         link.push(this.layout_001NHOLIDAY());
         link.push(this.layout_001OHOLIDAY());
+        link.push(this.layout_007HOLIDAY());
         link.push(this.layout_007BHOLIDAY());
       }
 
@@ -42,6 +43,7 @@ var mix_prodkinds = {
         link.push(this.layout_001MCHRISTMAS());
         link.push(this.layout_001NCHRISTMAS());
         link.push(this.layout_001OCHRISTMAS());
+        link.push(this.layout_007CHRISTMAS());
         link.push(this.layout_007BCHRISTMAS());
       }
 
@@ -56,6 +58,7 @@ var mix_prodkinds = {
         link.push(this.layout_001MNEWYEAR());
         link.push(this.layout_001NNEWYEAR());
         link.push(this.layout_001ONEWYEAR());
+        link.push(this.layout_007NEWYEAR());
         link.push(this.layout_007BNEWYEAR());
       }
 
@@ -70,6 +73,7 @@ var mix_prodkinds = {
         link.push(this.layout_001MRELIGIOUS());
         link.push(this.layout_001NRELIGIOUS());
         link.push(this.layout_001ORELIGIOUS());
+        link.push(this.layout_007RELIGIOUS());
         link.push(this.layout_007BRELIGIOUS());
       }
 
@@ -172,5 +176,45 @@ var mix_prodkinds = {
 
       return link.reverse();
     },
+    layout_HMC() {
+      var link = [];
+
+      link.push(this.layout_001());
+
+      if (this.greetings.includes('HOLIDAY')) {
+        link.push(this.layout_001HOLIDAY());
+        link.push(this.layout_001ZHOLIDAY());
+        link.push(this.layout_007BHOLIDAY());
+      }
+
+      if (this.greetings.includes('CHRISTMAS')) {
+        link.push(this.layout_001CHRISTMAS());
+        link.push(this.layout_001ZCHRISTMAS());
+        link.push(this.layout_007BCHRISTMAS());
+      }
+
+      if (this.greetings.includes('NEWYEAR')) {
+        link.push(this.layout_001NEWYEAR());
+        link.push(this.layout_001ZNEWYEAR());
+        link.push(this.layout_007BNEWYEAR());
+      }
+
+      if (this.greetings.includes('RELIGIOUS')) {
+        link.push(this.layout_001RELIGIOUS());
+        link.push(this.layout_001ZRELIGIOUS());
+        link.push(this.layout_007BRELIGIOUS());
+      }
+
+      link.push(this.layout_002C());
+      link.push(this.layout_002D());
+      link.push(this.layout_003());
+      link.push(this.layout_004());
+      link.push(this.layout_006());
+      link.push(this.layout_007());
+      link.push(this.layout_007B());
+      link.push(this.layout_008A());
+
+      return link.reverse();
+    }
   }
 }
