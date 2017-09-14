@@ -37,8 +37,9 @@ const app = new Vue({
         case 'HSM':
           this.links.array = this.layout_HSM().toString().split(',').reverse();
           break;
+        case 'HNY':
         case 'HYC':
-          this.links.array = this.layout_HYC().toString().split(',').reverse();
+          this.links.array = this.layout_HNY_HYC().toString().split(',').reverse();
           break;
         case 'HMC':
           this.links.array = this.layout_HMC().toString().split(',').reverse();

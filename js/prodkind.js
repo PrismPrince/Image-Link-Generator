@@ -102,7 +102,7 @@ var mix_prodkinds = {
 
       return link.reverse();
     },
-    layout_HYC() {
+    layout_HNY_HYC() {
       var link = [];
 
       link.push(this.layout_001());
