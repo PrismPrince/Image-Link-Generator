@@ -3,6 +3,7 @@ An image link generator for CDN cache invalidator of Minted. This is not an offi
 
 ## Supported Product Kind
 - AIO
+- FPC
 - HFM
 - HFS
 - HMC

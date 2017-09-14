@@ -12,6 +12,42 @@ var mix_prodkinds = {
 
       return link.reverse();
     },
+    layout_FPC() {
+      var link = [];
+
+      link.push(this.layout_001());
+
+      if (this.greetings.includes('HOLIDAY')) {
+        link.push(this.layout_001HOLIDAY(true));
+        link.push(this.layout_007HOLIDAY());
+        link.push(this.layout_007BHOLIDAY());
+      }
+
+      if (this.greetings.includes('CHRISTMAS')) {
+        link.push(this.layout_001CHRISTMAS(true));
+        link.push(this.layout_007CHRISTMAS());
+        link.push(this.layout_007BCHRISTMAS());
+      }
+
+      if (this.greetings.includes('NEWYEAR')) {
+        link.push(this.layout_001NEWYEAR(true));
+        link.push(this.layout_007NEWYEAR());
+        link.push(this.layout_007BNEWYEAR());
+      }
+
+      if (this.greetings.includes('RELIGIOUS')) {
+        link.push(this.layout_001RELIGIOUS(true));
+        link.push(this.layout_007RELIGIOUS());
+        link.push(this.layout_007BRELIGIOUS());
+      }
+
+      link.push(this.layout_002C());
+      link.push(this.layout_004());
+      link.push(this.layout_007());
+      link.push(this.layout_007B());
+
+      return link.reverse();
+    },
     layout_HFM() {
       var link = [];
 
