@@ -27,6 +27,16 @@ const app = new Vue({
       document.getElementById('links').select();
       document.execCommand('copy');
     },
+    clear() {
+      this.sku = '';
+      this.colorways = null;
+      this.greetings = [];
+      this.prepend_parameter = false;
+      this.links = {
+        string: '',
+        array: []
+      };
+    },
     generate_links() {
       switch (this.prodkind) {
         case 'AIO':
