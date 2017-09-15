@@ -5,6 +5,7 @@ const app = new Vue({
     sku: '',
     colorways: null,
     greetings: [],
+    prepend_parameter: false,
     links: {
       string: '',
       array: []
