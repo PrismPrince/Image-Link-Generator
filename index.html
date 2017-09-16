@@ -6,12 +6,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <style>
     [v-cloak] {display: none;}
-    #app {margin-top: 20px;}
-    .wrapper {position: relative;}
-    .wrapper > textarea {width: 100%; height: 150px; resize: vertical;}
-    .wrapper > .btn {position: absolute; top: 0; right: 0;}
     .product-image {text-align: center;}
     .product-image > img {margin: auto; max-width: 100%; display: flex; background: #eee url("./images/photo.png") no-repeat center; height: 200px;}
+    .links-wrapper {position: relative;}
+    .links-wrapper > textarea {width: 100%; height: 150px; resize: vertical;}
+    .links-wrapper > .btn {position: absolute; top: 0; right: 0;}
+    .filter .form-group {display: block;}
+    .filter .form-control {display: inline-block; width: auto;}
     .link-image > a {height: 50px; font-size: 12px;}
     .link-image > a[href$="PD.gif"] {background: #fff59d;}
     .link-image > a[href$="CP.jpg"] {background: #C5E1A5;}
@@ -56,31 +57,31 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="colorways">Colorways</label>
+              <label for="colorway">Colorways</label>
               <div class="radio">
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="A" v-model="colorways"> A
+                  <input type="radio" name="colorway" value="A" v-model="colorway"> A
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="B" v-model="colorways"> B
+                  <input type="radio" name="colorway" value="B" v-model="colorway"> B
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="C" v-model="colorways"> C
+                  <input type="radio" name="colorway" value="C" v-model="colorway"> C
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="D" v-model="colorways"> D
+                  <input type="radio" name="colorway" value="D" v-model="colorway"> D
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="E" v-model="colorways"> E
+                  <input type="radio" name="colorway" value="E" v-model="colorway"> E
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="F" v-model="colorways"> F
+                  <input type="radio" name="colorway" value="F" v-model="colorway"> F
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="G" v-model="colorways"> G
+                  <input type="radio" name="colorway" value="G" v-model="colorway"> G
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="colorways" value="H" v-model="colorways"> H
+                  <input type="radio" name="colorway" value="H" v-model="colorway"> H
                 </label>
               </div>
             </div>
@@ -106,7 +107,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Links <span class="label label-danger" v-if="links.array.length > 100">Cache invalidator has maximum of 100 entry. {{ links.array.length }} links generated.</span></label>
-              <div class="wrapper">
+              <div class="links-wrapper">
                 <textarea id="links" class="form-control" v-model="links.string" placeholder="Generated links"></textarea>
                 <button class="btn btn-default btn-xs" @click="copy_to_clipboard">Copy</button>
               </div>
@@ -114,12 +115,42 @@
           </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12" v-if="links.array.length">
+      <div class="row" v-if="links.array.length">
+        <div class="col-sm-12">
           <h3>Image Links <span class="badge">{{ links.array.length }}</span></h3>
         </div>
-        <div class="col-sm-1 link-image" v-for="link in links.array">
-          <a class="thumbnail" :href="link" target="_blank"><img :src="link" alt="No Image Generated"></a>
+        <div class="col-sm-12">
+          <form class="filter" @submit.prevent>
+            <div class="form-group">
+              <label>Filter</label>
+              <div>
+                <select name="colorways" class="form-control" v-model="filter.colorway">
+                  <option value="" disabled hidden selected="">Select colorway</option>
+                  <option :value="colorway" v-for="colorway in colorways">{{ colorway }}</option>
+                </select>
+                <select name="layouts" class="form-control" v-model="filter.layout">
+                  <option value="" disabled hidden selected="">Select layout</option>
+                  <option :value="layout" v-for="layout in layouts">{{ layout }}</option>
+                </select>
+                <select name="formats" class="form-control" v-model="filter.format">
+                  <option value="" disabled hidden selected="">Select format</option>
+                  <option :value="format" v-for="format in formats">{{ format }}</option>
+                </select>
+                <select name="greetings" class="form-control" v-if="greetings.length > 1" v-model="filter.greeting">
+                  <option value="" disabled hidden selected="">Select greeting</option>
+                  <option :value="greeting" v-for="greeting in greetings">{{ normalize_greeting(greeting) }}</option>
+                </select>
+                <button class="btn btn-primary" v-if="filter.colorway || filter.layout || filter.format || filter.greeting" @click="filter_images">Filter</button>
+                <button class="btn btn-default" v-if="filter.colorway || filter.layout || filter.format || filter.greeting" @click="clear_filter">Clear</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-1 link-image" v-for="image of filter.images">
+          <a class="thumbnail" :href="image" target="_blank"><img :src="image" alt="No Image Generated"></a>
+        </div>
+        <div class="col-sm-12" v-if="filter.images.length == 0">
+          <p>No results.</p>
         </div>
       </div>
       <div class="row ">
