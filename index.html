@@ -142,7 +142,7 @@
                   <option :value="greeting" v-for="greeting in greetings">{{ normalize_greeting(greeting) }}</option>
                 </select>
                 <button class="btn btn-primary" v-if="filter.colorway || filter.layout || filter.format || filter.greeting" @click="filter_images">Filter</button>
-                <button class="btn btn-default" v-if="filter.colorway || filter.layout || filter.format || filter.greeting" @click="clear_filter">Clear</button>
+                <button class="btn btn-default" v-if="filter.colorway || filter.layout || filter.format || filter.greeting" @click="reset_filter">Reset</button>
               </div>
             </div>
           </form>
@@ -171,7 +171,6 @@
           </div>
         </div>
       </div>
-      <pre>{{this.$data}}</pre>
     </div>
   </div>
   <script src="https://unpkg.com/vue"></script>

@@ -1,3 +1,5 @@
+document.addEventListener('touchstart', null, {passive: true});
+
 const app = new Vue({
   el: '#app',
   mixins: [mix_prodkinds, mix_layouts],
@@ -52,7 +54,7 @@ const app = new Vue({
           colorways.push('A');
       }
 
-      return colorways.reverse();
+      return colorways.sort();
     }
   },
   methods: {
@@ -62,15 +64,24 @@ const app = new Vue({
     },
     clear() {
       this.sku = '';
-      this.colorways = null;
+      this.colorway = '';
       this.greetings = [];
+      this.layouts = [];
+      this.formats = [];
       this.prepend_parameter = false;
       this.links = {
         string: '',
         array: []
       };
+      this.filter = {
+        colorway: '',
+        layout: '',
+        format: '',
+        greeting: '',
+        images: []
+      };
     },
-    clear_filter() {
+    reset_filter() {
       var links = [];
 
       for (var link of this.links.array) {
@@ -138,30 +149,30 @@ const app = new Vue({
     generate_links() {
       var links = [];
 
-      this.clear_filter();
+      this.reset_filter();
 
       switch (this.prodkind) {
         case 'AIO':
-          this.links.array = this.layout_AIO().reverse();
+          this.links.array = this.layout_AIO();
           break;
         case 'FPC':
-          this.links.array = this.layout_FPC().reverse();
+          this.links.array = this.layout_FPC();
           break;
         case 'HFM':
-          this.links.array = this.layout_HFM().reverse();
+          this.links.array = this.layout_HFM();
           break;
         case 'HFS':
-          this.links.array = this.layout_HFS().reverse();
+          this.links.array = this.layout_HFS();
           break;
         case 'HSM':
-          this.links.array = this.layout_HSM().reverse();
+          this.links.array = this.layout_HSM();
           break;
         case 'HNY':
         case 'HYC':
-          this.links.array = this.layout_HNY_HYC().reverse();
+          this.links.array = this.layout_HNY_HYC();
           break;
         case 'HMC':
-          this.links.array = this.layout_HMC().reverse();
+          this.links.array = this.layout_HMC();
           break;
         default: return;
       }
