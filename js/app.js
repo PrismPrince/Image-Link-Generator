@@ -167,9 +167,10 @@ const app = new Vue({
         case 'HSM':
           this.links.array = this.layout_HSM();
           break;
+        case 'HNP':
         case 'HNY':
         case 'HYC':
-          this.links.array = this.layout_HNY_HYC();
+          this.links.array = this.layout_HNP_HNY_HYC();
           break;
         case 'HMC':
           this.links.array = this.layout_HMC();

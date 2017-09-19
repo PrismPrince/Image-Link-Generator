@@ -7,6 +7,7 @@ An image link generator for CDN cache invalidator of Minted. This is not an offi
 - HFM
 - HFS
 - HMC
+- HNP
 - HNY
 - HSM
 - HYC
