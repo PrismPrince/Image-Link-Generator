@@ -155,17 +155,24 @@ const app = new Vue({
         case 'AIO':
           this.links.array = this.layout_AIO();
           break;
+        case 'BLB':
+          this.links.array = this.layout_BLB();
+          break;
         case 'FPC':
           this.links.array = this.layout_FPC();
           break;
         case 'HFM':
           this.links.array = this.layout_HFM();
           break;
+        case 'FHB':
         case 'HFS':
-          this.links.array = this.layout_HFS();
+          this.links.array = this.layout_FHB_HFS();
           break;
         case 'HSM':
           this.links.array = this.layout_HSM();
+          break;
+        case 'HLW':
+          this.links.array = this.layout_HLW();
           break;
         case 'HNP':
         case 'HNY':

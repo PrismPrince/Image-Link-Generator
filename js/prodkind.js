@@ -17,6 +17,21 @@ var mix_prodkinds = {
 
       return link.reduce((a, b) => {return a.concat(b)}, []);
     },
+    layout_BLB() {
+      var link = [];
+
+      this.layouts = [];
+      this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
+
+      link.push(this.layout_001());
+      link.push(this.layout_003());
+      link.push(this.layout_007());
+      link.push(this.layout_007B());
+
+      this.layouts.sort();
+
+      return link.reduce((a, b) => {return a.concat(b)}, []);
+    },
     layout_FPC() {
       var link = [];
 
@@ -107,7 +122,7 @@ var mix_prodkinds = {
 
       return link.reduce((a, b) => {return a.concat(b)}, []);
     },
-    layout_HFS() {
+    layout_FHB_HFS() {
       var link = [];
 
       this.layouts = [];
@@ -202,6 +217,37 @@ var mix_prodkinds = {
       link.push(this.layout_007());
       link.push(this.layout_007B());
       link.push(this.layout_008());
+
+      this.layouts.sort();
+
+      return link.reduce((a, b) => {return a.concat(b)}, []);
+    },
+    layout_HLW() {
+      var link = [];
+
+      this.layouts = [];
+      this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
+
+      link.push(this.layout_001());
+      link.push(this.layout_001A());
+      link.push(this.layout_001B());
+      link.push(this.layout_001C());
+      link.push(this.layout_001D());
+      // link.push(this.layout_001I());
+      link.push(this.layout_001J());
+      // link.push(this.layout_001M());
+      link.push(this.layout_001N());
+      link.push(this.layout_001O());
+      link.push(this.layout_007B());
+      link.push(this.layout_002C());
+      link.push(this.layout_003());
+      link.push(this.layout_004());
+      link.push(this.layout_006());
+      link.push(this.layout_007());
+      link.push(this.layout_007B());
+      link.push(this.layout_008());
+      link.push(this.layout_008A());
+      link.push(this.layout_009());
 
       this.layouts.sort();
 
