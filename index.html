@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Image Link Generator</title>
   <link rel="icon" href="./images/prism_60.gif">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -14,12 +17,16 @@
     .filter .form-group {display: block;}
     .filter .form-control {display: inline-block; width: auto;}
     .link-image > a {height: 50px; font-size: 12px;}
-    .link-image > a[href$="PD.gif"] {background: #fff59d;}
-    .link-image > a[href$="CP.jpg"] {background: #C5E1A5;}
-    .link-image > a[href$="PD.jpg"] {background: #80CBC4;}
-    .link-image > a[href$="PZ.jpg"] {background: #C5CAE9;}
-    .link-image > a[href$="TH.jpg"] {background: #CE93D8;}
+    .link-image > .thumb-a, .filter-colorways option[value="A"] {background: #E57373;}
+    .link-image > .thumb-b, .filter-colorways option[value="B"] {background: #F06292;}
+    .link-image > .thumb-c, .filter-colorways option[value="C"] {background: #BA68C8;}
+    .link-image > .thumb-d, .filter-colorways option[value="D"] {background: #7986CB;}
+    .link-image > .thumb-e, .filter-colorways option[value="E"] {background: #64B5F6;}
+    .link-image > .thumb-f, .filter-colorways option[value="F"] {background: #4DB6AC;}
+    .link-image > .thumb-g, .filter-colorways option[value="G"] {background: #81C784;}
+    .link-image > .thumb-h, .filter-colorways option[value="H"] {background: #DCE775;}
     .link-image > a > img {max-height: 100%;}
+    .filter-colorways option {color: #fff;}
   </style>
 </head>
 <body>
@@ -125,7 +132,7 @@
             <div class="form-group">
               <label>Filter</label>
               <div>
-                <select name="colorways" class="form-control" v-model="filter.colorway">
+                <select name="colorways" class="form-control filter-colorways" v-model="filter.colorway">
                   <option value="" disabled hidden selected="">Select colorway</option>
                   <option :value="colorway" v-for="colorway in colorways">{{ colorway }}</option>
                 </select>
@@ -148,7 +155,7 @@
           </form>
         </div>
         <div class="col-sm-1 link-image" v-for="image of filter.images">
-          <a class="thumbnail" :href="image" target="_blank"><img :src="image" alt="No Image Generated"></a>
+          <a class="thumbnail" :class="{'thumb-a': image.colorway == 'A', 'thumb-b': image.colorway == 'B', 'thumb-c': image.colorway == 'C', 'thumb-d': image.colorway == 'D', 'thumb-e': image.colorway == 'E', 'thumb-f': image.colorway == 'F', 'thumb-g': image.colorway == 'G', 'thumb-h': image.colorway == 'H'}" :href="image.link" target="_blank"><img :src="image.link" alt="No Image Generated"></a>
         </div>
         <div class="col-sm-12" v-if="filter.images.length == 0">
           <p>No results.</p>

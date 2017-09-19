@@ -93,7 +93,7 @@ const app = new Vue({
         layout: '',
         format: '',
         greeting: '',
-        images: links
+        images: this.links.array
       };
     },
     normalize_greeting(greeting) {
@@ -144,7 +144,7 @@ const app = new Vue({
         temp.push(f.link)
       }
 
-      this.filter.images = temp;
+      this.filter.images = filter;
     },
     generate_links() {
       var links = [];
@@ -183,7 +183,7 @@ const app = new Vue({
       }
 
       this.links.string = links.toString().replace(/,/g, '\n');
-      this.filter.images = links;
+      this.filter.images = this.links.array;
     }
   }
 })
