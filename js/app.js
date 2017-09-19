@@ -175,6 +175,9 @@ const app = new Vue({
         case 'HMC':
           this.links.array = this.layout_HMC();
           break;
+        case 'HPC':
+          this.links.array = this.layout_HPC();
+          break;
         default: return;
       }
 

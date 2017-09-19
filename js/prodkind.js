@@ -2,7 +2,6 @@ var mix_prodkinds = {
   methods: {
     layout_AIO() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['PD.gif', 'PZ.gif', 'CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -20,7 +19,6 @@ var mix_prodkinds = {
     },
     layout_FPC() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['PD.gif', 'PZ.gif', 'CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -62,7 +60,6 @@ var mix_prodkinds = {
     },
     layout_HFM() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['PD.gif', 'CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -112,7 +109,6 @@ var mix_prodkinds = {
     },
     layout_HFS() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['PD.gif', 'CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -196,7 +192,6 @@ var mix_prodkinds = {
     },
     layout_HSM() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -214,7 +209,6 @@ var mix_prodkinds = {
     },
     layout_HNP_HNY_HYC() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -294,7 +288,6 @@ var mix_prodkinds = {
     },
     layout_HMC() {
       var link = [];
-      var obj;
 
       this.layouts = [];
       this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
@@ -337,6 +330,47 @@ var mix_prodkinds = {
       link.push(this.layout_007());
       link.push(this.layout_007B());
       link.push(this.layout_008A());
+
+      this.layouts.sort();
+
+      return link.reduce((a, b) => {return a.concat(b)}, []);
+    },
+    layout_HPC() {
+      var link = [];
+
+      this.layouts = [];
+      this.formats = ['CP.jpg', 'PD.jpg', 'PZ.jpg', 'TH.jpg'];
+
+      link.push(this.layout_001());
+
+      if (this.greetings.includes('HOLIDAY')) {
+        link.push(this.layout_001HOLIDAY());
+        link.push(this.layout_007HOLIDAY());
+        link.push(this.layout_007BHOLIDAY());
+      }
+
+      if (this.greetings.includes('CHRISTMAS')) {
+        link.push(this.layout_001CHRISTMAS());
+        link.push(this.layout_007CHRISTMAS());
+        link.push(this.layout_007BCHRISTMAS());
+      }
+
+      if (this.greetings.includes('NEWYEAR')) {
+        link.push(this.layout_001NEWYEAR());
+        link.push(this.layout_007NEWYEAR());
+        link.push(this.layout_007BNEWYEAR());
+      }
+
+      if (this.greetings.includes('RELIGIOUS')) {
+        link.push(this.layout_001RELIGIOUS());
+        link.push(this.layout_007RELIGIOUS());
+        link.push(this.layout_007BRELIGIOUS());
+      }
+
+      link.push(this.layout_002C());
+      link.push(this.layout_004());
+      link.push(this.layout_007());
+      link.push(this.layout_007B());
 
       this.layouts.sort();
 
