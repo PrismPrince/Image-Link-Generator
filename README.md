@@ -6,6 +6,7 @@ An image link generator for CDN cache invalidator of Minted. This is not an offi
 - BLB
 - FHB
 - FPC
+- HCP
 - HFM
 - HFS
 - HLW

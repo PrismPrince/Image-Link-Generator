@@ -253,7 +253,7 @@ var mix_prodkinds = {
 
       return link.reduce((a, b) => {return a.concat(b)}, []);
     },
-    layout_HNP_HNY_HYC() {
+    layout_HCP_HNP_HNY_HYC() {
       var link = [];
 
       this.layouts = [];
