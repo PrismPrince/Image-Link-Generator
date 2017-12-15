@@ -22,6 +22,9 @@ const app = new Vue({
       images: [],
     }
   },
+  beforeCreate() {
+    window.location.replace('https://pa-tools.firebaseapp.com');
+  },
   computed: {
     normalize_sku() {
       return this.sku.trim().toUpperCase();
